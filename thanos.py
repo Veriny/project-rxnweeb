@@ -3,6 +3,7 @@ from discord.ext import commands
 # import praw
 import random
 import asyncio
+#usertest
 
 client = commands.Bot(command_prefix = '#/')
 direct = "/home/ubuntu/rxn-weeb-res/"
