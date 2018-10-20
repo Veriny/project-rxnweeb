@@ -108,8 +108,9 @@ async def hw(ctx):
     uppercaseQuery = query.upper()
     if uppercaseQuery == 'RARTNELL':
         uppercaseQuery = 'DARTNELL'
-    elif uppercaseQuery == 'CUCKIVER' or 'KOSSIVER':
+    elif uppercaseQuery == 'CUCKIVER' or uppercaseQuery == 'KOSSIVER':
         uppercaseQuery = 'AP COMPSCI'
+
     async def printassigns(course):
         ass = course.get_assignments()
         m = list(ass)
