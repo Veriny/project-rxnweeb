@@ -463,6 +463,7 @@ async def help(ctx):
         #/stronk - flex
         #/dial911
         #/everyonespam - enough spam
+        #/jazz
         """)
     emb.add_field(name="RPG Commands:", value = """
         #/attack <@user>
@@ -489,7 +490,8 @@ async def help(ctx):
     emb.add_field(name = "Canvas Commands:", value = """
         #/canvasid <id>
         #/canvastoken <token>
-        #/canvashw""")
+        #/canvashw
+        #/hw <class>""")
 
     await client.say(embed=emb)
 
