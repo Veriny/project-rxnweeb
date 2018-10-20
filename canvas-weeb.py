@@ -85,6 +85,54 @@ async def canvashw(ctx):
     with open(direct + 'canvas.json', 'w' ) as f:
         json.dump(users, f)
 
+@bot.command(pass_context=True)
+async def hw(ctx):
+    with open(direct + 'canvas.json', 'r') as f:
+        users = json.load(f)
+    # Import the Canvas class
+    await update_data(users, ctx.message.author)
+    emb = discord.Embed(description = "Please wait, Reaction-Weeb is sending a request to canvas...", colour= discord.Color(random.randint(0x000000, 0xFFFFFF)))
+    await bot.say(embed=emb)
+    id = users[ctx.message.author.id]['ID']
+    token = users[ctx.message.author.id]['token']
+    API_URL = "https://smuhsd.instructure.com/api/v1/courses"
+    # Canvas API key
+    API_KEY = token
+    foundCourse = False
+    canvas = Canvas(API_URL, API_KEY)
+    #the magic happens here
+    user = canvas.get_user(int(id))
+    print(id)
+    args = ctx.message.content.split(" ")
+    query = " ".join(args[1:])
+    uppercaseQuery = query.upper()
+    if uppercaseQuery == 'RARTNELL':
+        uppercaseQuery = 'DARTNELL'
+    elif uppercaseQuery == 'CUCKIVER' or 'KOSSIVER':
+        uppercaseQuery = 'AP COMPSCI'
+    async def printassigns(course):
+        ass = course.get_assignments()
+        m = list(ass)
+        q = m[-10:]
+        q.reverse()
+        string = ""
+        for assignment in q:
+            string = string + ("%s \n" % assignment)
+        emb = discord.Embed(description = string, colour= discord.Color(random.randint(0x000000, 0xFFFFFF)))
+        emb.set_author(name = "{} ({})".format(course.name, course.id))
+        await bot.say(embed = emb)
+    courses = user.get_courses()
+    for c in courses:
+        if uppercaseQuery in c.name.upper():
+            foundCourse = True
+            await printassigns(c)
+    if foundCourse == True:
+        emb = discord.Embed(description = "Enjoy your homework <3", colour= discord.Color(random.randint(0x000000, 0xFFFFFF)))
+    else:
+        emb = discord.Embed(description = "No courses found. This is so sad, Alexa play despacito. Try using teacher name.", colour= discord.Color(random.randint(0x000000, 0xFFFFFF)))
+    await bot.say(embed=emb)
+    with open(direct + 'canvas.json', 'w' ) as f:
+        json.dump(users, f)
 
 #@bot.command
 #async def canvassearch(ctx):
