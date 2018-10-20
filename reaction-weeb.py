@@ -98,6 +98,12 @@ async def hahaha(ctx):
     await client.say(embed=emb)
 
 @client.command(pass_context = True)
+async def jazz(ctx):
+    emb = (discord.Embed(description="", colour=0x3DF270))
+    emb.set_image(url="https://cdn.discordapp.com/attachments/448673389905838111/503308417297809432/image0.jpg")
+    await client.say(embed=emb)
+
+@client.command(pass_context = True)
 async def angeryping(ctx):
     emb = (discord.Embed(description="", colour=0x3DF270))
     emb.set_image(url="https://cdn.discordapp.com/attachments/400525440084738048/487099610205126656/who_pinged_me_1.gif")
