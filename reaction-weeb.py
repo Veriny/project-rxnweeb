@@ -464,6 +464,7 @@ async def help(ctx):
         #/dial911
         #/everyonespam - enough spam
         #/jazz
+        #/angeryping
         """)
     emb.add_field(name="RPG Commands:", value = """
         #/attack <@user>
