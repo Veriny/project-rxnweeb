@@ -16,15 +16,17 @@ file.close()
 direct = "/home/ubuntu/rxn-weeb-res/"
 file1 = open(direct + "reddit_id.txt", 'r')
 CLIENT_IDENTIFICATION = file1.readline()
+print(CLIENT_IDENTIFICATION)
 file1.close()
 
 direct = "/home/ubuntu/rxn-weeb-res/"
 file2 = open(direct + "reddit_secret.txt", 'r')
 SECRET_CLIENT = file2.readline()
+print(SECRET_CLIENT)
 file2.close()
 
-reddit = praw.Reddit(client_id=CLIENT_IDENTIFICATION,
-                     client_secret=SECRET_CLIENT,
+reddit = praw.Reddit(client_id='{}'.format(CLIENT_IDENTIFICATION),
+                     client_secret='{}'.format(SECRET_CLIENT),
                      user_agent='Reaction-Weeb')
 @client.event
 async def on_ready():
