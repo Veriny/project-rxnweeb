@@ -5,7 +5,6 @@ import random
 
 
 client = commands.Bot(command_prefix ="#")
-
 client.remove_command('help')
 
 direct = "/home/ubuntu/rxn-weeb-res/"
