@@ -13,8 +13,18 @@ file = open(direct + "token.txt", 'r')
 BOT_TOKEN = file.readline()
 file.close()
 
-reddit = praw.Reddit(client_id='Wcu7Lk3PQ9LV1A',
-                     client_secret='FBqR2NccNSBrRbLFRy-zaq4PLxY',
+direct = "/home/ubuntu/rxn-weeb-res/"
+file1 = open(direct + "reddit_id.txt", 'r')
+CLIENT_IDENTIFICATION = file1.readline()
+file1.close()
+
+direct = "/home/ubuntu/rxn-weeb-res/"
+file2 = open(direct + "reddit_secret.txt", 'r')
+SECRET_CLIENT = file2.readline()
+file2.close()
+
+reddit = praw.Reddit(client_id=CLIENT_IDENTIFICATION,
+                     client_secret=SECRET_CLIENT,
                      user_agent='Reaction-Weeb')
 @client.event
 async def on_ready():
