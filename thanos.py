@@ -6,6 +6,8 @@ import asyncio
 #usertest
 
 client = commands.Bot(command_prefix = '#/')
+client.remove_command('help')
+
 direct = "/home/ubuntu/rxn-weeb-res/"
 file = open(direct + "token.txt", 'r')
 BOT_TOKEN = file.readline()
@@ -18,11 +20,11 @@ async def on_message(message):
         await client.send_message(message.channel, "+3008.join")
     await client.process_commands(message)
 
-@client.command(pass_context = True)
-async def angrypings(ctx):
-    for i in range (1, 10000):
-        await client.say("<@287439639130800130> DO WE NEED TO PRINT OUR NOTES")
-        await asyncio.sleep(3)
+#@client.command(pass_context = True)
+#async def angrypings(ctx):
+#    for i in range (1, 10000):
+#        await client.say("<@287439639130800130> DO WE NEED TO PRINT OUR NOTES")
+#        await asyncio.sleep(3)
 
 
 
